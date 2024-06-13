@@ -97,7 +97,7 @@ echo ""
 echo ""
 echo "[1] Install xCBTheme"
 echo "[2] Restore Backup"
-echp "[3] Uninstall Theme"
+echo "[3] Uninstall Theme"
 echo "[4] Exit theme Setup"
 
 read -p "Please enter a number: " choice
