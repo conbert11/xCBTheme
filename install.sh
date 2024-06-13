@@ -87,6 +87,17 @@ repair(){
     bash <(curl https://raw.githubusercontent.com/conbert11/xCBTheme/main/repair.sh)
 }
 
+exit(){
+        while true; do
+        read -p "Do you want to leave the setup? [y/n] " yn
+        case $yn in
+            [Yy]* ) clear; exit;;
+            [Nn]* ) clear; bash <(curl https://raw.githubusercontent.com/conbert11/xCBTheme/main/install.sh);; 
+            * ) echo "Please answer (y) or (n)";;
+        esac
+    done
+}
+
 echo ""
 echo ""
 echo "
@@ -117,12 +128,5 @@ if [ $choice == "2" ]
 fi
 if [ $choice == "exit" ]
     then
-    while true; do
-        read -p "Do you want to leave the setup? [y/n] " yn
-        case $yn in
-            [Yy]* ) exit;;
-            [Nn]* ) bash <(curl https://raw.githubusercontent.com/conbert11/xCBTheme/main/install.sh);;
-            * ) echo "Please answer (y) or (n)";;
-        esac
-    done
+
 fi
