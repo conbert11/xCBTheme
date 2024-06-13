@@ -127,5 +127,6 @@ if [ $choice == "2" ]
 fi
 if [ $choice == "exit" ]
     then
+    clear
     exit
 fi
