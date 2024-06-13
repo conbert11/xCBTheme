@@ -98,7 +98,7 @@ echo ""
 echo "[1] Install xCBTheme"
 echo "[2] Restore Backup"
 echo "[3] Uninstall Theme"
-echo "[4] Exit theme Setup"
+echo "[exit] Exit theme Setup"
 
 read -p "Please enter a number: " choice
 if [ $choice == "1" ]
@@ -113,7 +113,7 @@ if [ $choice == "3" ]
     then
     repair
 fi
-if [ $choice == "4" ]
+if [ $choice == "exit" ]
     then
     exit
 fi
