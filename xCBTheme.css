@@ -1,5 +1,5 @@
 html {
-  background-image: "https://i.imgur.com/O9Da1AA.png";
+  background-image: url("https://raw.githubusercontent.com/conbert11/xCBTheme/main/background.png");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center center;
@@ -98,7 +98,7 @@ label.Label-sc-g780ms-0 {
 }
 
 img.LoginFormContainer___StyledImg-sc-cyh04c-5 {
-  content:url('https://i.imgur.com/QmMfWXL.jpeg') !important;
+  content:url("https://raw.githubusercontent.com/conbert11/xCBTheme/main/background.png") !important;
   padding-left: 20px !important; 
   padding-right: 20px !important; 
   padding-top: 0px !important; 
