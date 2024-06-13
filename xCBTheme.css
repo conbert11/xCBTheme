@@ -34,13 +34,13 @@ div.style-module_1n_DiqmT {
 }
 
 button.Button__ButtonStyle-sc-1qu1gou-0.dLAOsI {
-  background-color: #7a0000 !important; 
-  border: #7a0000 2px solid !important;
+  background-color: #00127C !important; 
+  border: #00127C 2px solid !important;
   border-radius: 10px !important;
 }
 
 div.SettingsContainer___StyledDiv6-sc-1e5ycmz-7.bzLcIU {
-  border-left: 4px solid #7a0000 !important;
+  border-left: 4px solid #00127C !important;
 }
 
 label.Label-sc-g780ms-0.eDArzA {
@@ -48,23 +48,23 @@ label.Label-sc-g780ms-0.eDArzA {
 }
 
 button.style-module_4LBM1DKx.style-module_3kBDV_wo { /* change */
-  background-color:#7a0000 !important;
+  background-color:#00127C !important;
   border-radius: 10px !important;
 }
 
 button.style-module_4LBM1DKx.style-module_3kBDV_wo.style-module_2UCZLAAp {
-  background-color:#7a0000 !important;
+  background-color:#00127C !important;
   border-radius: 10px !important;
 }
 
 div.xterm-viewport {
   border-radius: 2px !important;
   background-color: rgba(0,0,0,0.5) !important;
-  scrollbar-color: rgb(143, 0, 0) #f1f1f1 !important; 
+  scrollbar-color: rgb(0, 14, 143) #f1f1f1 !important; 
   scrollbar-width: thin !important;  
   background: black !important;
   background-color: rgb(19, 26, 32); 
-  scrollbar-color: #7a0000 #000000 !important;
+  scrollbar-color: #00127C #000000 !important;
 
 }
 
@@ -78,7 +78,7 @@ div.xterm-viewport::-webkit-scrollbar-button {
 
 div.xterm-viewport::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background-color: rgb(143, 0, 0) #f1f1f1 !important; 
+  background-color: rgb(0, 14, 143) #f1f1f1 !important; 
 }
 
 div.xterm-viewport::-webkit-scrollbar-track {
@@ -187,17 +187,17 @@ div.TitledGreyBox___StyledDiv3-sc-gvsoy-4.fKIIIQ {
 }
 
 p.input-help {
-  color: red !important;
+  color: rgb(4, 0, 255) !important;
 }
 
 
 input.peer.style-module_3TDo--Tn:focus {
-  border-bottom: 2px solid #7a0000;
+  border-bottom: 2px solid #00127C;
   border-radius: 10px;
 }
 
 input.peer.style-module_3TDo--Tn {
-  border-bottom: 0px solid red;
+  border-bottom: 0px solid rgb(4, 0, 255);
   border-radius: 10px;
 }
 
@@ -220,7 +220,7 @@ input.Input-sc-19rce1w-0.floJYL,
 input.Input-sc-19rce1w-0.fFYzlR,
 textarea.Input__Textarea-sc-19rce1w-1.kKFWRA {
   background-color: rgba(61, 0, 1,0.3) !important; 
-  border: 2px solid #470001 !important;
+  border: 2px solid #00127C !important;
   color: #a0a0a0 !important;
 }
 
@@ -230,7 +230,7 @@ input.Input-sc-19rce1w-0.floJYL:hover,
 input.Input-sc-19rce1w-0.fFYzlR:hover,
 textarea.Input__Textarea-sc-19rce1w-1.kKFWRA:hover {
   background-color: rgba(61, 0, 1,0.3) !important; 
-  border: 2px solid #470001 !important;
+  border: 2px solid #00127C !important;
   color: #a0a0a0 !important;
 }
 
@@ -240,22 +240,22 @@ input.Input-sc-19rce1w-0.floJYL:focus,
 input.Input-sc-19rce1w-0.fFYzlR:focus,
 textarea.Input__Textarea-sc-19rce1w-1.kKFWRA:focus {
   background-color: rgba(61, 0, 1,0.3) !important; 
-  border: 2px solid #470001 !important;
+  border: 2px solid #00127C !important;
   color: #a0a0a0 !important;
 }
 
 /* Beispiel für spezifischeren Zustand */
 input.Input-sc-19rce1w-0.fFYzlR {
   background-color: rgba(61, 0, 1,0.3) !important;
-  border: 2px solid #470001 !important;
+  border: 2px solid #00127C !important;
   color: #a0a0a0 !important;
 }
 
 
 
 button.Button__ButtonStyle-sc-1qu1gou-0 {
-  background-color: #7a0000 !important;
-  border: 2px solid #7a0000 !important;
+  background-color: #00127C !important;
+  border: 2px solid #00127C !important;
   border-radius: 10px !important;
 }
 
@@ -348,6 +348,7 @@ div.TitledGreyBox___StyledDiv-sc-gvsoy-0.oLbNP.StartupContainer___StyledTitledGr
 }
 
 div.App___StyledDiv-sc-2l91w7-0.fnfeQw {
+  background-image: url("https://raw.githubusercontent.com/conbert11/xCBTheme/main/background.png");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center center;
@@ -365,7 +366,7 @@ label.PermissionRow__Container-sc-1h899cn-0.icxFlO:hover {
 
 div.bg-gray-700 {
   background-color:rgba(0,0,0,0.3) !important;
-  border: 2px solid #470001 !important;
+  border: 2px solid #00127C !important;
 }
 
 div.TitledGreyBox___StyledDiv-sc-gvsoy-0.oLbNP {
@@ -386,19 +387,19 @@ div.grid.grid-cols-10.py-4.border-b-2.border-gray-800.last:rounded-b.last:border
 
 div.TaskDetailsModal___StyledDiv5-sc-1b5dnyw-7.kNHdmD {
   background-color: rgba(61, 0, 1,0.3) !important; 
-  border: 2px solid #470001 !important;
+  border: 2px solid #00127C !important;
   color: #a0a0a0 !important;
 }
 
 select.Select-sc-17exaqp-0.dupyoa {
   background-color: rgba(61, 0, 1,0.3) !important; 
-  border: 2px solid #470001 !important;
+  border: 2px solid #00127C !important;
   color: #a0a0a0 !important;
 }
 
 option {
   background-color: rgba(61, 0, 1, 1) !important; 
-  border: 2px solid #470001 !important;
+  border: 2px solid #00127C !important;
   color: #a0a0a0 !important;
 }
 
@@ -406,22 +407,22 @@ div.style-module_1RnhIT0w {
   background-color: rgba(61, 0, 1, 1) !important; 
   color: #a0a0a0 !important; 
   border-radius: 5px !important; 
-  box-shadow: 0 0 10px #890000 !important;
+  box-shadow: 0 0 10px #00127C !important;
 }
 
 div.ScheduleEditContainer___StyledDiv3-sc-1fhsmlc-7.bNXcqn {
-  border-bottom: 4px solid #470001 !important;
+  border-bottom: 4px solid #00127C !important;
 }
 
 div.ScheduleTaskRow___StyledDiv-sc-17r38ls-0.ipThkt {
   background-color: rgba(0, 0, 0,1) !important; 
-  border: 2px solid #470001 !important;
+  border: 2px solid #00127C !important;
   color: #a0a0a0 !important;
 }
 
 div.grid-cols-10 {
   background-color: rgba(0, 0, 0,1) !important; 
-  border: 2px solid #470001 !important;
+  border: 2px solid #00127C !important;
   color: #a0a0a0 !important; 
   margin-bottom: 5px !important;
 }
