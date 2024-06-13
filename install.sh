@@ -65,7 +65,8 @@ installTheme(){
     echo "DOWNLOADING DONE!"
 
     clear
-    exit
+    bash <(curl https://raw.githubusercontent.com/conbert11/xCBTheme/main/install.sh)
+    
 
 
 }
@@ -96,20 +97,23 @@ restoreBackUp(){
     sudo php artisan optimize:clear
 }
 
-echo "██╗  ██╗ ██████╗██████╗ ████████╗██╗  ██╗███████╗███╗   ███╗███████╗
+echo ""
+echo ""
+echo "
+██╗  ██╗ ██████╗██████╗ ████████╗██╗  ██╗███████╗███╗   ███╗███████╗
 ╚██╗██╔╝██╔════╝██╔══██╗╚══██╔══╝██║  ██║██╔════╝████╗ ████║██╔════╝
  ╚███╔╝ ██║     ██████╔╝   ██║   ███████║█████╗  ██╔████╔██║█████╗  
  ██╔██╗ ██║     ██╔══██╗   ██║   ██╔══██║██╔══╝  ██║╚██╔╝██║██╔══╝  
 ██╔╝ ██╗╚██████╗██████╔╝   ██║   ██║  ██║███████╗██║ ╚═╝ ██║███████╗
 ╚═╝  ╚═╝ ╚═════╝╚═════╝    ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝╚══════╝
                                                                     "
+echo ""
 echo "Copyright (C) 2024 Angelillo15 and NoPro200 and conbert11"
 echo "This theme is free and can be modified"
 echo ""
 echo ""
 echo "[1] Install xCBTheme"
-echo "[2] Restore Backup"
-echo "[3] Uninstall Theme"
+echo "[2] Uninstall Theme"
 echo "[exit] Exit theme Setup"
 
 read -p "Please enter a number: " choice
@@ -118,10 +122,6 @@ if [ $choice == "1" ]
     installThemeQuestion
 fi
 if [ $choice == "2" ]
-    then
-    restoreBackUp
-fi
-if [ $choice == "3" ]
     then
     repair
 fi
