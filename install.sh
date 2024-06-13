@@ -83,18 +83,8 @@ installThemeQuestion(){
 }
 
 repair(){
+    
     bash <(curl https://raw.githubusercontent.com/conbert11/xCBTheme/main/repair.sh)
-}
-
-restoreBackUp(){
-    echo "Restoring backup..."
-    cd /var/www/
-    tar -xvf xCBTheme_Themebackup.tar.gz
-    rm xCBTheme_Themebackup.tar.gz
-
-    cd /var/www/pterodactyl
-    yarn build:production
-    sudo php artisan optimize:clear
 }
 
 echo ""
@@ -108,13 +98,13 @@ echo "
 ╚═╝  ╚═╝ ╚═════╝╚═════╝    ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝╚══════╝
                                                                     "
 echo ""
-echo "Copyright (C) 2024 Angelillo15 and NoPro200 and conbert11"
-echo "This theme is free and can be modified"
+echo "Copyright (C) 2024 conbert11"
+echo "The theme is copyrighted and may not be copied."
 echo ""
 echo ""
 echo "[1] Install xCBTheme"
-echo "[2] Uninstall Theme"
-echo "[exit] Exit theme Setup"
+echo "[2] Uninstall xCBTheme"
+echo "[exit] Exit setup"
 
 read -p "Please enter a number: " choice
 if [ $choice == "1" ]
@@ -127,6 +117,12 @@ if [ $choice == "2" ]
 fi
 if [ $choice == "exit" ]
     then
-    clear
-    exit
+    while true; do
+        read -p "Do you want to leave the setup? [y/n] " yn
+        case $yn in
+            [Yy]* ) exit;;
+            [Nn]* ) bash <(curl https://raw.githubusercontent.com/conbert11/xCBTheme/main/install.sh);;
+            * ) echo "Please answer (y) or (n)";;
+        esac
+    done
 fi
