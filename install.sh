@@ -48,7 +48,6 @@ installTheme(){
     mv index.tsx /var/www/pterodactyl/resources/scripts/index.tsx > /dev/null 2>&1
     mv xCBTheme.css /var/www/pterodactyl/resources/scripts/xCBTheme.css > /dev/null 2>&1
     cd /var/www/pterodactyl > /dev/null 2>&1
-    echo "${GREEN}DOWNLOADING DONE!${RESET}"
 
     echo -e "${GREEN}Installing Node.js${RESET}"
     curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash - > /dev/null 2>&1
@@ -63,6 +62,10 @@ installTheme(){
     yarn build:production > /dev/null 2>&1
     echo -e "${GREEN}Optimizing the Panel...${RESET}"
     sudo php artisan optimize:clear > /dev/null 2>&1
+    echo "DOWNLOADING DONE!"
+
+    clear
+    exit
 
 
 }
