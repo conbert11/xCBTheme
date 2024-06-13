@@ -27,11 +27,11 @@ installTheme(){
     cd /var/www/pterodactyl
     rm -r xCBTheme
     git clone https://github.com/conbert11/xCBTheme.git
-    cd Pterodactyl_Nightcore_Theme
+    cd xCBTheme
     rm /var/www/pterodactyl/resources/scripts/xCBTheme.css
     rm /var/www/pterodactyl/resources/scripts/index.tsx
     mv index.tsx /var/www/pterodactyl/resources/scripts/index.tsx
-    mv Pterodactyl_Nightcore_Theme.css /var/www/pterodactyl/resources/scripts/xCBTheme.css
+    mv xCBTheme.css /var/www/pterodactyl/resources/scripts/xCBTheme.css
     cd /var/www/pterodactyl
 
     curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
@@ -74,7 +74,6 @@ restoreBackUp(){
     sudo php artisan optimize:clear
 }
 echo "Copyright (C) 2024 Angelillo15 and NoPro200 and conbert11"
-echo "This program is free software: you can redistribute it and/or modify"
 echo ""
 echo ""
 echo "[1] Install theme"
