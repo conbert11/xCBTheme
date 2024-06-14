@@ -101,9 +101,11 @@ echo "Made by conbert11"
 echo "YOUR INSTALLING IS NOW DONE! HAVE FUN WITH YOUR NEW THEME."
 echo ""
 echo "[exit] Exit setup"
+read -p "Please enter: " choice
 if [ $choice == "exit" ]
     then
-    exitt
+    clear
+    exit
 
 fi
 }
