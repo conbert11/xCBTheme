@@ -87,7 +87,7 @@ repair(){
     bash <(curl https://raw.githubusercontent.com/conbert11/xCBTheme/main/repair.sh)
 }
 
-exit(){
+exitt(){
         while true; do
         read -p "Do you want to leave the setup? [y/n] " yn
         case $yn in
@@ -128,5 +128,6 @@ if [ $choice == "2" ]
 fi
 if [ $choice == "exit" ]
     then
+    exitt
 
 fi
