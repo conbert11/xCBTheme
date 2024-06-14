@@ -81,10 +81,31 @@ echo ""
     echo "DONE!"
 
     clear
-    bash <(curl https://raw.githubusercontent.com/conbert11/xCBTheme/main/install.sh)
+    downloaddone
     
 
 
+}
+
+downloaddone(){
+    echo ""
+    echo "
+██╗███╗   ██╗███████╗████████╗ █████╗ ██╗     ██╗     ██╗███╗   ██╗ ██████╗     ██████╗  ██████╗ ███╗   ██╗███████╗
+██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║     ██║     ██║████╗  ██║██╔════╝     ██╔══██╗██╔═══██╗████╗  ██║██╔════╝
+██║██╔██╗ ██║███████╗   ██║   ███████║██║     ██║     ██║██╔██╗ ██║██║  ███╗    ██║  ██║██║   ██║██╔██╗ ██║█████╗  
+██║██║╚██╗██║╚════██║   ██║   ██╔══██║██║     ██║     ██║██║╚██╗██║██║   ██║    ██║  ██║██║   ██║██║╚██╗██║██╔══╝  
+██║██║ ╚████║███████║   ██║   ██║  ██║███████╗███████╗██║██║ ╚████║╚██████╔╝    ██████╔╝╚██████╔╝██║ ╚████║███████╗
+╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝     ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝                                                                                                               
+    "
+echo "Made by conbert11"
+echo "YOUR INSTALLING IS NOW DONE! HAVE FUN WITH YOUR NEW THEME."
+echo ""
+echo "[exit] Exit setup"
+if [ $choice == "exit" ]
+    then
+    exitt
+
+fi
 }
 
 installThemeQuestion(){
@@ -133,7 +154,7 @@ echo "[1] Install xCBTheme"
 echo "[2] Uninstall xCBTheme"
 echo "[exit] Exit setup"
 
-read -p "Please enter a number: " choice
+read -p "Please enter: " choice
 if [ $choice == "1" ]
     then
     installThemeQuestion
