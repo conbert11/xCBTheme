@@ -4,32 +4,29 @@ if (( $EUID != 0 )); then
 fi
 
 repairPanel(){
-    echo -e "${GREEN}Uninstalling xCBTheme...${RESET}"
-cd /var/www/pterodactyl 2>&1
+cd /var/www/pterodactyl
 
-    php artisan down 2>&1
+    php artisan down
 
-    rm -r /var/www/pterodactyl/resources 2>&1
+    rm -r /var/www/pterodactyl/resources
 
     curl -L https://github.com/pterodactyl/panel/releases/latest/download/panel.tar.gz | tar -xzv
 
-    chmod -R 755 storage/* bootstrap/cache 2>&1
+    chmod -R 755 storage/* bootstrap/cache
 
-    composer install --no-dev --optimize-autoloader 2>&1
+    composer install --no-dev --optimize-autoloader
 
-    php artisan view:clear 2>&1
+    php artisan view:clear
 
-    php artisan config:clear 2>&1
+    php artisan config:clear
 
-    php artisan migrate --seed --force 2>&1
+    php artisan migrate --seed --force
  
-    chown -R www-data:www-data /var/www/pterodactyl/* 2>&1
+    chown -R www-data:www-data /var/www/pterodactyl/*
 
-    php artisan queue:restart 2>&1
+    php artisan queue:restart
 
-    php artisan up 2>&1
-
-    echo "UNINSTALLING DONE!"
+    php artisan up
 
 clear
 bash <(curl https://raw.githubusercontent.com/conbert11/xCBTheme/main/install.sh)
