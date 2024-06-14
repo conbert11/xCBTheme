@@ -1,4 +1,4 @@
-#!/bin/bash
+/#!/bin/bash
 
 if (( $EUID != 0 )); then
     echo "Please run as root"
@@ -62,7 +62,7 @@ installTheme(){
     yarn build:production > /dev/null 2>&1
     echo -e "${GREEN}Optimizing the Panel...${RESET}"
     sudo php artisan optimize:clear > /dev/null 2>&1
-    echo "DOWNLOADING DONE!"
+    echo "DONE!"
 
     clear
     bash <(curl https://raw.githubusercontent.com/conbert11/xCBTheme/main/install.sh)

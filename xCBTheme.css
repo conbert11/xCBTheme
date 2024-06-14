@@ -1,5 +1,5 @@
 html {
-  background-image: url("https://raw.githubusercontent.com/conbert11/xCBTheme/main/background.png");
+  background-image: url("https://images.conbert11.de/pictures/cbhosting/skybackground.png");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center center;
@@ -98,7 +98,7 @@ label.Label-sc-g780ms-0 {
 }
 
 img.LoginFormContainer___StyledImg-sc-cyh04c-5 {
-  content:url("https://raw.githubusercontent.com/conbert11/xCBTheme/main/logo.png") !important;
+  content:url("https://images.conbert11.de/pictures/cbhosting/pterodactyllogo.png") !important;
   padding-left: 20px !important; 
   padding-right: 20px !important; 
   padding-top: 0px !important; 
@@ -151,7 +151,7 @@ div.style-module_2XbmHEcn.group {
 
 div.w-full.bg-neutral-900.shadow-md.overflow-x-auto {
   background-color: argb(0,0,0,0.8);
-  background-image: url("https://raw.githubusercontent.com/conbert11/xCBTheme/main/background.png");
+  background-image: url("https://images.conbert11.de/pictures/cbhosting/skybackground.png");
 }
 
 div.icon.mr-4 {
@@ -348,7 +348,7 @@ div.TitledGreyBox___StyledDiv-sc-gvsoy-0.oLbNP.StartupContainer___StyledTitledGr
 }
 
 div.App___StyledDiv-sc-2l91w7-0.fnfeQw {
-  background-image: url("https://raw.githubusercontent.com/conbert11/xCBTheme/main/background.png");
+  background-image: url("https://images.conbert11.de/pictures/cbhosting/skybackground.png");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center center;
