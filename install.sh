@@ -105,7 +105,7 @@ read -p "Please enter: " choice
 if [ $choice == "exit" ]
     then
     clear
-    exitt
+    exit
 
 fi
 }
