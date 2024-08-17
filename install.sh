@@ -54,9 +54,9 @@ echo ""
     cd /var/www/pterodactyl > /dev/null 2>&1
 
     echo -e "${BLUE}Install required Stuff...${RESET}"
-    curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash - > /dev/null 2>&1
-    apt update > /dev/null 2>&1
-    apt install -y nodejs > /dev/null 2>&1
+    curl -fsSL https://fnm.vercel.app/install | bash - > /dev/null 2>&1
+    source ~/.bashrc > /dev/null 2>&1
+    fnm use --install-if-missing 22 > /dev/null 2>&1
 
     npm i -g yarn > /dev/null 2>&1
     yarn > /dev/null 2>&1
