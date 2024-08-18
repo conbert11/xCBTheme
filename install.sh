@@ -21,7 +21,7 @@ echo "
                                                                                                                             "
 echo ""
 echo "Made by conbert11"
-echo "YOUR THEME IS INSTALLING NOW! PLEASE WAIT A LITTLE BIT."
+echo "THEME IS INSTALLING NOW! PLEASE WAIT A LITTLE BIT."
 echo ""
 echo ""
     RED='\033[0;31m'
