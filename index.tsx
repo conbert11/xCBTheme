@@ -1,17 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from '@/components/App';
 import { setConfig } from 'react-hot-loader';
 import './xCBTheme.css';
-
-// Enable language support.
 import './i18n';
 
-// Prevents page reloads while making component changes which
-// also avoids triggering constant loading indicators all over
-// the place in development.
-//
-// @see https://github.com/gaearon/react-hot-loader#hook-support
 setConfig({ reloadHooks: false });
 
-ReactDOM.render(<App />, document.getElementById('app'));
+const rootElement = document.getElementById('app');
+if (!rootElement) {
+    throw new Error("Root element with id 'app' not found.");
+}
+
+const root = createRoot(rootElement); 
+root.render(<App />);
