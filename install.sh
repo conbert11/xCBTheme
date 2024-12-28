@@ -128,7 +128,7 @@ show_menu() {
     echo "The theme is free and can be modified."
     echo ""
     echo "1) Install xCBTheme"
-    echo "2) Uninstall Theme"
+    echo "2) Uninstall xCBTheme"
     echo "3) Join Support Server (Discord)"
     echo "4) Exit"
     echo ""
