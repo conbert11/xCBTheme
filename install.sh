@@ -1,166 +1,159 @@
-/#!/bin/bash
+#!/bin/bash
 
-if (( $EUID != 0 )); then
-    echo "Please run as root"
-    exit
-fi
+# Constants
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+MAGENTA='\033[0;35m'
+CYAN='\033[0;36m'
+RESET='\033[0m'
 
-clear
-
-installTheme(){
-    clear
-
-echo ""
-echo "
-████████╗██╗  ██╗███████╗███╗   ███╗███████╗    ██╗███╗   ██╗███████╗████████╗ █████╗ ██╗     ██╗     ██╗███╗   ██╗ ██████╗ 
-╚══██╔══╝██║  ██║██╔════╝████╗ ████║██╔════╝    ██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║     ██║     ██║████╗  ██║██╔════╝ 
-   ██║   ███████║█████╗  ██╔████╔██║█████╗      ██║██╔██╗ ██║███████╗   ██║   ███████║██║     ██║     ██║██╔██╗ ██║██║  ███╗
-   ██║   ██╔══██║██╔══╝  ██║╚██╔╝██║██╔══╝      ██║██║╚██╗██║╚════██║   ██║   ██╔══██║██║     ██║     ██║██║╚██╗██║██║   ██║
-   ██║   ██║  ██║███████╗██║ ╚═╝ ██║███████╗    ██║██║ ╚████║███████║   ██║   ██║  ██║███████╗███████╗██║██║ ╚████║╚██████╔╝
-   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝╚══════╝    ╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ 
-                                                                                                                            "
-echo ""
-echo "Made by conbert11"
-echo "THEME IS INSTALLING NOW! PLEASE WAIT A LITTLE BIT."
-echo ""
-echo ""
-    RED='\033[0;31m'
-    GREEN='\033[0;32m'
-    YELLOW='\033[1;33m'
-    BLUE='\033[0;34m'
-    MAGENTA='\033[0;35m'
-    CYAN='\033[0;36m'
-    RESET='\033[0m'
-
-    echo -e "${BLUE}Installing ${YELLOW}sudo${BLUE} if not installed${RESET}"
-    apt install sudo -y > /dev/null 2>&1
-    cd /var/www/ > /dev/null 2>&1
-    echo -e "${BLUE}Unpacking xCBthemeBackup...${RESET}"
-    tar -cvf xCBTheme_Themebackup.tar.gz pterodactyl > /dev/null 2>&1
-    echo -e "${BLUE}Installing xCBtheme... ${RESET}"
-    cd /var/www/pterodactyl > /dev/null 2>&1
-    echo -e "${BLUE}Download the xCBtheme...${RESET}"
-    git clone https://github.com/conbert11/xCBTheme.git > /dev/null 2>&1
-    cd xCBTheme > /dev/null 2>&1
-    echo -e "${BLUE}Removing old xCBTheme resources/themes if exist... ${RESET}"
-    rm /var/www/pterodactyl/resources/scripts/xCBTheme.css > /dev/null 2>&1
-    rm /var/www/pterodactyl/resources/scripts/index.tsx > /dev/null 2>&1
-    rm -r xCBTheme > /dev/null 2>&1
-    echo -e "${BLUE}Adjust xCBTheme panel...${RESET}"
-    yarn build:production > /dev/null 2>&1
-    sudo php artisan optimize:clear > /dev/null 2>&1
-    mv index.tsx /var/www/pterodactyl/resources/scripts/index.tsx > /dev/null 2>&1
-    mv xCBTheme.css /var/www/pterodactyl/resources/scripts/xCBTheme.css > /dev/null 2>&1
-    cd /var/www/pterodactyl > /dev/null 2>&1
-
-    echo -e "${BLUE}Install required Stuff...${RESET}"
-    curl -fsSL https://fnm.vercel.app/install | bash - > /dev/null 2>&1
-    source ~/.bashrc > /dev/null 2>&1
-    fnm use --install 16 > /dev/null 2>&1
-
-    npm i -g yarn > /dev/null 2>&1
-    yarn > /dev/null 2>&1
-
-    cd /var/www/pterodactyl > /dev/null 2>&1
-
-    echo "DONE!"
-
-    clear
-    downloaddone
-    
-
-
+# Check if script is run as root
+check_root() {
+    if [[ $EUID -ne 0 ]]; then
+        echo -e "${RED}This script must be run as root${RESET}"
+        exit 1
+    fi
 }
 
-downloaddone(){
+# Error handling function
+handle_error() {
+    echo -e "${RED}Error: $1${RESET}"
+    exit 1
+}
+
+# Backup function
+backup_pterodactyl() {
+    echo -e "${BLUE}Creating backup of existing installation...${RESET}"
+    cd /var/www/ || handle_error "Could not access /var/www/"
+    tar -czf "pterodactyl_backup_$(date +%Y%m%d_%H%M%S).tar.gz" pterodactyl || handle_error "Backup failed"
+    echo -e "${GREEN}Backup created successfully${RESET}"
+}
+
+# Main installation function
+install_theme() {
+    clear
+    print_banner "THEME INSTALLATION"
+    
+    # Install dependencies
+    echo -e "${BLUE}Installing dependencies...${RESET}"
+    apt-get update > /dev/null 2>&1 || handle_error "Failed to update package list"
+    apt-get install -y sudo git curl > /dev/null 2>&1 || handle_error "Failed to install dependencies"
+
+    # Backup existing installation
+    backup_pterodactyl
+
+    # Clone and setup theme
+    cd /var/www/pterodactyl || handle_error "Could not access pterodactyl directory"
+    echo -e "${BLUE}Downloading theme...${RESET}"
+    rm -rf xCBTheme
+    git clone https://github.com/conbert11/xCBTheme.git || handle_error "Failed to clone theme repository"
+    
+    # Remove old theme files
+    echo -e "${BLUE}Cleaning old theme files...${RESET}"
+    rm -f resources/scripts/xCBTheme.css resources/scripts/index.tsx
+
+    # Install Node.js and dependencies
+    echo -e "${BLUE}Setting up Node.js environment...${RESET}"
+    export NVM_DIR="$HOME/.nvm"
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    nvm install 16 || handle_error "Failed to install Node.js"
+    nvm use 16
+
+    # Install yarn and build
+    echo -e "${BLUE}Installing Yarn and building theme...${RESET}"
+    npm install -g yarn || handle_error "Failed to install Yarn"
+    yarn install || handle_error "Failed to install dependencies"
+    yarn build:production || handle_error "Failed to build theme"
+
+    # Move theme files
+    cd xCBTheme || handle_error "Could not access theme directory"
+    mv index.tsx ../resources/scripts/
+    mv xCBTheme.css ../resources/scripts/
+
+    # Clear Laravel cache
+    php artisan optimize:clear || handle_error "Failed to clear Laravel cache"
+
+    echo -e "${GREEN}Theme installation completed successfully!${RESET}"
+    print_banner "INSTALLATION COMPLETE"
+}
+
+# Banner printing function
+print_banner() {
+    local text="$1"
     echo ""
-    echo "
-██╗███╗   ██╗███████╗████████╗ █████╗ ██╗     ██╗     ██╗███╗   ██╗ ██████╗     ██████╗  ██████╗ ███╗   ██╗███████╗
-██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║     ██║     ██║████╗  ██║██╔════╝     ██╔══██╗██╔═══██╗████╗  ██║██╔════╝
-██║██╔██╗ ██║███████╗   ██║   ███████║██║     ██║     ██║██╔██╗ ██║██║  ███╗    ██║  ██║██║   ██║██╔██╗ ██║█████╗  
-██║██║╚██╗██║╚════██║   ██║   ██╔══██║██║     ██║     ██║██║╚██╗██║██║   ██║    ██║  ██║██║   ██║██║╚██╗██║██╔══╝  
-██║██║ ╚████║███████║   ██║   ██║  ██║███████╗███████╗██║██║ ╚████║╚██████╔╝    ██████╔╝╚██████╔╝██║ ╚████║███████╗
-╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝     ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝                                                                                                               
-    "
-echo "Made by conbert11"
-echo "YOUR INSTALLING IS NOW DONE! HAVE FUN WITH YOUR NEW THEME."
-echo ""
-echo "[exit] Exit setup"
-read -p "Please enter: " choice
-if [ $choice == "exit" ]
-    then
+    echo "======================================"
+    echo "   $text"
+    echo "======================================"
+    echo ""
+}
+
+# Uninstall function
+uninstall_theme() {
     clear
-    exitt
-
-fi
-}
-
-installThemeQuestion(){
-    while true; do
-        read -p "Are you sure that you want to install the theme [y/n]? " yn
-        case $yn in
-            [Yy]* ) installTheme; break;;
-            [Nn]* ) exit;;
-            * ) echo "Please answer (y) or (n)";;
-        esac
-    done
-}
-
-repair(){
+    print_banner "THEME UNINSTALLATION"
     
-    bash <(curl https://raw.githubusercontent.com/conbert11/xCBTheme/main/repair.sh)
+    cd /var/www/pterodactyl || handle_error "Could not access pterodactyl directory"
+    
+    # Restore from backup
+    echo -e "${BLUE}Restoring from backup...${RESET}"
+    local latest_backup=$(ls -t /var/www/pterodactyl_backup_*.tar.gz 2>/dev/null | head -n1)
+    
+    if [ -n "$latest_backup" ]; then
+        tar -xzf "$latest_backup" -C /var/www/ || handle_error "Failed to restore backup"
+        echo -e "${GREEN}Restored from backup: $latest_backup${RESET}"
+    else
+        echo -e "${YELLOW}No backup found. Performing clean uninstall...${RESET}"
+        rm -f resources/scripts/xCBTheme.css resources/scripts/index.tsx
+        yarn build:production || handle_error "Failed to rebuild default theme"
+    fi
+    
+    echo -e "${GREEN}Theme uninstallation completed!${RESET}"
 }
 
-exitt(){
-        while true; do
-        read -p "Do you want to leave the setup? [y/n] " yn
-        case $yn in
-            [Yy]* ) clear; exit;;
-            [Nn]* ) clear; bash <(curl https://raw.githubusercontent.com/conbert11/xCBTheme/main/install.sh);; 
-            * ) echo "Please answer (y) or (n)";;
-        esac
-    done
+# Main menu
+show_menu() {
+    clear
+    print_banner "xCBTheme Installer"
+    echo "Copyright (C) 2024 conbert11"
+    echo "The theme is free and can be modified"
+    echo ""
+    echo "1) Install xCBTheme"
+    echo "2) Uninstall Theme"
+    echo "3) Join Support Server (Discord)"
+    echo "4) Exit"
+    echo ""
 }
 
-supportserver(){
-    echo "Support-Server: https://dsc.gg/xcbtheme"
-}
+# Main program
+check_root
 
-echo ""
-echo ""
-echo "
- ██████╗██████╗    ████████╗██╗  ██╗███████╗███╗   ███╗███████╗███████╗
-██╔════╝██╔══██╗   ╚══██╔══╝██║  ██║██╔════╝████╗ ████║██╔════╝██╔════╝
-██║     ██████╔╝█████╗██║   ███████║█████╗  ██╔████╔██║█████╗  ███████╗
-██║     ██╔══██╗╚════╝██║   ██╔══██║██╔══╝  ██║╚██╔╝██║██╔══╝  ╚════██║
-╚██████╗██████╔╝      ██║   ██║  ██║███████╗██║ ╚═╝ ██║███████╗███████║
- ╚═════╝╚═════╝       ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝╚══════╝╚══════╝
-                                                                    "
-echo ""
-echo "Copyright (C) 2024 conbert11"
-echo "The theme is free and can be modified"
-echo ""
-echo ""
-echo "[1] Install xCBTheme"
-echo "[2] Uninstall Theme"
-echo "[3] Support Server (DISCORD)"
-echo "[exit] Exit setup"
-
-read -p "Please enter: " choice
-if [ $choice == "1" ]
-    then
-    installThemeQuestion
-fi
-if [ $choice == "2" ]
-    then
-    repair
-fi
-if [ $choice == "2" ]
-    then
-    supportserver
-fi
-if [ $choice == "exit" ]
-    then
-    exitt
-
-fi
+while true; do
+    show_menu
+    read -p "Enter your choice (1-4): " choice
+    
+    case $choice in
+        1)
+            read -p "Are you sure you want to install the theme? [y/N] " confirm
+            [[ $confirm == [yY] ]] && install_theme
+            ;;
+        2)
+            read -p "Are you sure you want to uninstall the theme? [y/N] " confirm
+            [[ $confirm == [yY] ]] && uninstall_theme
+            ;;
+        3)
+            echo "Support Server: https://dsc.gg/xcbtheme"
+            read -p "Press Enter to continue..."
+            ;;
+        4)
+            echo "Goodbye!"
+            exit 0
+            ;;
+        *)
+            echo -e "${RED}Invalid option${RESET}"
+            sleep 1
+            ;;
+    esac
+done
